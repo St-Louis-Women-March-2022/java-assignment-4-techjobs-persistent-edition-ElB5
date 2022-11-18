@@ -16,10 +16,9 @@ public class Employer extends AbstractEntity {
         return location;
     }
 
-    //not sure need this since only 1 location per employer
-//    public void setLocation(String location) {
-//        this.location = location;
-//    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public Employer() {};
 
