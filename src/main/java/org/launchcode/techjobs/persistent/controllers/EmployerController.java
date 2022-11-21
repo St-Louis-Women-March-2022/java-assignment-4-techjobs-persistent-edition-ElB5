@@ -26,7 +26,7 @@ public class EmployerController {
     public String index (Model model) {
         model.addAttribute("title", "All Employers");
         List employers = (List<Employer>) employerRepository.findAll();
-        model.addAttribute("employers", "employers");
+        model.addAttribute("employers", employers);
         return "employers/index";
     }
 
@@ -42,7 +42,6 @@ public class EmployerController {
                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
-//            model.addAttribute("title", "Add Employer");
             return "employers/add";
         }
         //3
