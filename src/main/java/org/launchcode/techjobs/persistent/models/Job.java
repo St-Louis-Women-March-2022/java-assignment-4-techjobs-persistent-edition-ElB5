@@ -3,7 +3,7 @@ package org.launchcode.techjobs.persistent.models;
 import javax.persistence.*;
 
 
-//Part 3, Update job model: Update the class definition of Job to extend AbstractEntity.
+//Part 3, Update job model: Update the class to extend AbstractEntity.
 @Entity
 public class Job extends AbstractEntity{
 
