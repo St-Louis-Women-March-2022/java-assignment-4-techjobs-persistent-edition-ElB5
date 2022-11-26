@@ -4,6 +4,8 @@ import org.launchcode.techjobs.persistent.models.Skill;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+//Part 2 Data Layer, To map the Employer and Skill classes to your techjobs database,
+// you’ll add data access interfaces for these relational objects,
 @Repository
 public interface SkillRepository extends CrudRepository<Skill, Integer> {
 }

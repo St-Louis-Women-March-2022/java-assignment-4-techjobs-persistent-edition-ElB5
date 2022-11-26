@@ -2,44 +2,43 @@ package org.launchcode.techjobs.persistent.models;
 
 import javax.persistence.*;
 
+
+//Part 3, Update job model: Update the class definition of Job to extend AbstractEntity.
 @Entity
-public class Job{
+public class Job extends AbstractEntity{
 
-    @Id
-    @GeneratedValue
-    private int id;
+//Part 3, Update Job Model: removed these fields since extending AbstractEntity
+//    @Id
+//    @GeneratedValue
+//    private int id;
+//
+//    private String name;
 
-    private String name;
 
-    private String employer;
+    //Part 3, Update Job Model: Replace the type of the field employer to be of type Employer.
+    //Add the @ManyToOne
+    @ManyToOne
+    private Employer employer;
+
     private String skills;
 
     public Job() {
     }
 
-    public Job(String anEmployer, String someSkills) {
-        super();
+    //Part 3, update job model-refactor the affected constructor and getter and setter (Employer).
+    public Job(Employer anEmployer, String someSkills) {
         this.employer = anEmployer;
         this.skills = someSkills;
     }
 
-    // Getters and setters.
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmployer() {
+    public Employer getEmployer() {
         return employer;
     }
 
-    public void setEmployer(String employer) {
+    public void setEmployer(Employer employer) {
         this.employer = employer;
     }
+
 
     public String getSkills() {
         return skills;

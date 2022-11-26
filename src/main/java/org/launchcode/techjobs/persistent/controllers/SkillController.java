@@ -12,20 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
+
+//Part 2 Controller, Create a SkillController class and replicate the steps you followed for
+// EmployerController. The new controller should have the methods, index, displayAddSkillForm,
+// processAddSkillForm, and displayViewSkill.
+// These methods should behave exactly as the corresponding methods in EmployerController.
 @Controller
 @RequestMapping("skills")
 public class SkillController {
 
-    //1
     @Autowired
     private SkillRepository skillRepository;
 
-    //2????
+
     @GetMapping("")
     public String index (Model model) {
          model.addAttribute("title", "All Skills");
          model.addAttribute("skills", skillRepository.findAll());
-//        model.addAttribute("skills", "skills");
         return "skills/index";
     }
 
@@ -36,6 +39,8 @@ public class SkillController {
         return "skills/add";
     }
 
+
+    //finish part 4
     @PostMapping("add")
     public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
                                          Errors errors, Model model) {
@@ -43,17 +48,16 @@ public class SkillController {
         if (errors.hasErrors()) {
             return "skills/add";
         }
-        //3
         skillRepository.save(newSkill);
         return "redirect:";
     }
 
 
-    //4
     @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
 
-        Optional optSkill = skillRepository.findById(skillId);
+        Optional <Skill> optSkill = skillRepository.findById(skillId);
+
         if (optSkill.isPresent()) {
             Skill skill = (Skill) optSkill.get();
             model.addAttribute("skill", skill);

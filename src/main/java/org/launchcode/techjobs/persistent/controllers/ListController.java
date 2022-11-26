@@ -31,6 +31,7 @@ public class ListController {
 
     }
 
+    //add into view here.............
     @RequestMapping("")
     public String list(Model model) {
 
