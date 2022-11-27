@@ -1,6 +1,8 @@
 package org.launchcode.techjobs.persistent.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 //Part 3, Update job model: Update the class to extend AbstractEntity.
@@ -15,18 +17,20 @@ public class Job extends AbstractEntity{
 //    private String name;
 
 
-    //Part 3, Update Job Model: Replace the type of the field employer to be of type Employer.
-    //Add the @ManyToOne
+    //Part 3, Update Job Model: Replace the type of the field employer to Employer. Add the @ManyToOne
     @ManyToOne
     private Employer employer;
 
-    private String skills;
+    //Part 4, Update Job Model: Replace the type of the field skills to List<Skill>. Add the @ManyToMany
+    @ManyToMany
+    private List<Skill> skills;
 
     public Job() {
     }
 
-    //Part 3, update job model-refactor the affected constructor and getter and setter (Employer).
-    public Job(Employer anEmployer, String someSkills) {
+    //Part 3, refactor the affected constructor and getter and setter (Employer).
+    //Part 4, refactor the affected constructor and getter and setter (List<Skill>).
+    public Job(Employer anEmployer, List<Skill> someSkills) {
         this.employer = anEmployer;
         this.skills = someSkills;
     }
@@ -39,12 +43,11 @@ public class Job extends AbstractEntity{
         this.employer = employer;
     }
 
-
-    public String getSkills() {
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(String skills) {
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 }

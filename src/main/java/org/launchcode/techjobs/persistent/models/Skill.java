@@ -15,6 +15,20 @@ public class Skill extends AbstractEntity {
     @Size(min = 10, max = 500)
     private String description;
 
+    //Part 4 setting up many to many- add a jobs field. Add a getter and setter for the field.
+    //This field has a many-to-many type relationship with skills. You’ll need to add the @ManyToMany
+    // annotation with an argument mappedBy="skills" to configure this mapping
+    @ManyToMany(mappedBy="skills")
+    private final List<Job> jobs = new ArrayList<>();
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public List<Job> setJobs() {
+        return jobs;
+    }
+
 
     public String getDescription() {
         return description;
