@@ -6,7 +6,8 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-//Part 2 Models, add @Entity annotation
+//Part 2 Models, add @Entity annotation (an entity represents a table in a relational database, and each entity
+// instance corresponds to a row in that table)
 @Entity
 public class Skill extends AbstractEntity {
 
@@ -29,7 +30,6 @@ public class Skill extends AbstractEntity {
         return jobs;
     }
 
-
     public String getDescription() {
         return description;
     }
@@ -41,7 +41,5 @@ public class Skill extends AbstractEntity {
     public Skill(String description) {}
 
     //Part 2 Models, add no-arg constructor.
-    public Skill() {
-
-    }
+    public Skill() {}
 }

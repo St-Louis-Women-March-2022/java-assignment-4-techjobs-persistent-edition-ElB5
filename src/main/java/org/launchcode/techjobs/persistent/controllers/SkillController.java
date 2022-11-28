@@ -21,10 +21,12 @@ import java.util.Optional;
 @RequestMapping("skills")
 public class SkillController {
 
+    //Add a private field of SkillRepository called skillRepository + @Autowired.
     @Autowired
     private SkillRepository skillRepository;
 
-
+    //Add an index method that responds at /skills with a list of all skills in the database.
+    // (method uses template skills/index).
     @GetMapping("")
     public String index (Model model) {
          model.addAttribute("title", "All Skills");
@@ -46,8 +48,11 @@ public class SkillController {
                                          Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            //???add model.AddAttribute to pass into view (similar to Home Controller's same method)
+            //model.addAttribute("title", "Add Skill");
             return "skills/add";
         }
+        //to save a valid object:
         skillRepository.save(newSkill);
         return "redirect:";
     }
@@ -55,7 +60,7 @@ public class SkillController {
 
     @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
-
+        //looks for the given skill object from the data layer.
         Optional <Skill> optSkill = skillRepository.findById(skillId);
 
         if (optSkill.isPresent()) {
@@ -66,5 +71,4 @@ public class SkillController {
             return "redirect:../";
         }
     }
-
 }

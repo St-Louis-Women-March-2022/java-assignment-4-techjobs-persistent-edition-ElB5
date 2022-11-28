@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//Part 2 Models, add @Entity annotation
+//Part 2 Models, add @Entity annotation (an entity represents a table in a relational database, and each entity
+// instance corresponds to a row in that table)
 @Entity
 //add public accessor methods to Employer
 public class Employer extends AbstractEntity {
@@ -43,5 +44,4 @@ public class Employer extends AbstractEntity {
 
     //Part 2 Models, add no-arg constructor required for Hibernate to create an object.
     public Employer() {};
-
 }

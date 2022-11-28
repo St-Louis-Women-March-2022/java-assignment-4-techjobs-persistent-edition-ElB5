@@ -7,7 +7,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-//Part 2, give AbstractEntity the @MappedSuperclass annotation.
+//Part 2, give AbstractEntity the @MappedSuperclass annotation (mapping information is applied to the entities that
+// inherit from it. A mapped superclass has no separate table defined for it).
 @MappedSuperclass
 public abstract class AbstractEntity {
 
@@ -55,5 +56,4 @@ public abstract class AbstractEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
-
 }

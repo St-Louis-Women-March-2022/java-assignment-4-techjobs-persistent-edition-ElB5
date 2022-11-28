@@ -34,13 +34,11 @@ public class HomeController {
     @Autowired
     private SkillRepository skillRepository;
 
-
     @RequestMapping("")
     public String index(Model model) {
         model.addAttribute("title", "My Jobs");
         return "index";
     }
-
 
     //(user will select an employer when they create a job)
     @GetMapping("add")
@@ -62,14 +60,12 @@ public class HomeController {
         return "add";
     }
 
-
-    //Part 4, pass in that attribute value to processAddJobForm in HomeController as a @RequestParam
-    // List<Integer> skills.
-    //
+    //Part 4, pass in attribute value as a @RequestParam List<Integer> skills.
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                        Errors errors, Model model, @RequestParam int employerId,
                                     @RequestParam List<Integer> skills) {
+
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
             return "add";
@@ -79,7 +75,7 @@ public class HomeController {
         // affiliated with the new job, select the employer using the request parameter you’ve added to
         // the method (employerId).(added all before return redirect)
         Optional <Employer> optEmployer = employerRepository.findById(employerId);
-        //form data is validated (similar to code in displayview method in EmployerController)
+        //(form data is validated (similar to code in displayview method in EmployerController)
         if (optEmployer.isPresent()) {
             //employer to be found
             Employer employer = (Employer) optEmployer.get();
@@ -101,7 +97,6 @@ public class HomeController {
         return "redirect:./";
     }
 
-
     @GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
 
@@ -115,6 +110,4 @@ public class HomeController {
             return "redirect:./";
         }
     }
-
-
 }

@@ -15,11 +15,9 @@ import java.util.Optional;
 @RequestMapping("employers")
 public class EmployerController {
 
-    //Part 2 Controllers, Add a private field of EmployerRepository
-    // type called employerRepository, add @Autowired annotation.
+    //Part 2 Controllers, Add a private field of EmployerRepository called employerRepository + @Autowired.
     @Autowired
     private EmployerRepository employerRepository;
-
 
     //Part 2, Add an index method that responds at /employers with a list of all employers in the database.
     // (method uses template employers/index).
@@ -29,7 +27,6 @@ public class EmployerController {
         model.addAttribute("employers", employerRepository.findAll());
         return "employers/index";
     }
-
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
@@ -54,7 +51,6 @@ public class EmployerController {
         return "redirect:";
     }
 
-
     //(In charge of rendering a page to view the contents of an individual employer object)
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
@@ -62,7 +58,6 @@ public class EmployerController {
         //Part 2 Controller, updated optEmployer from null to .findById() method with the right argument to look for
         // the given employer object from the data layer.
         Optional <Employer> optEmployer = employerRepository.findById(employerId);
-
 
         if (optEmployer.isPresent()) {
             Employer employer = (Employer) optEmployer.get();

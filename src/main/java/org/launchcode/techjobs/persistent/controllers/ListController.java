@@ -24,7 +24,6 @@ import java.util.List;
 public class ListController {
 
     //Part 4, add fields for EmployerRepository and SkillRepository, both annotated with @Autowired
-
     @Autowired
     private SkillRepository skillRepository;
 
@@ -37,27 +36,25 @@ public class ListController {
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController () {
-
         columnChoices.put("all", "All");
         columnChoices.put("employer", "Employer");
         columnChoices.put("skill", "Skill");
-
     }
 
     @RequestMapping("")
     public String list(Model model) {
         //Part 4, pass the employer and skill data from those repositories into the view template rendered at list/.
-        // Add the right model.addAttribute(name, value) statements to pass this info into templates/list.html
         //Add the employer data from employerRepository into the form template(used code from HomeController)
         List employers = (List<Employer>) employerRepository.findAll();
         //part 4, pass into view and match variable name for the employer data of what is already used in templates/add.
+        // Add the right model.addAttribute(name, value) statements to pass this info into templates/list.html
         model.addAttribute("employers", employers);
 
         //Part 4, Add the skill data from skillRepository into the form template(used code from HomeController)
         List skills = (List<Skill>) skillRepository.findAll();
         //part 4, pass into view and match variable name for the skill data of what is already used in templates/add.
+        // Add the right model.addAttribute(name, value) statements to pass this info into templates/list.html
         model.addAttribute("skills", skills);
-
 
         return "list";
     }
